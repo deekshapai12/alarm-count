@@ -1,7 +1,14 @@
-# alarm-count
-<a href="https://heroku.com/deploy">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
-<a href="https://heroku.com/deploy?template=https://github.com/heroku/node-js-sample">
-  <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
-</a>
+# Alarm count - sample webhook implementation in Python
+
+This is a really simple webhook implementation that gets Api.ai classification JSON (i.e. a JSON output of Api.ai /query endpoint) and returns a fulfillment response containing the count of alarms
+
+More info about Api.ai webhooks could be found here:
+[Api.ai Webhook](https://docs.api.ai/docs/webhook)
+
+# Deploy to:
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+# What does the service do?
+It's an alarm count service, that uses a custom JSON URL. It takes parameters from the action and filters the JSON according to requests required.
+
+The service packs the result in the Api.ai webhook-compatible response JSON and returns it to Api.ai.
