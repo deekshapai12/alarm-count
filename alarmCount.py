@@ -70,7 +70,7 @@ def filterResult(data,parameters):
     result = []
     if priority != '':
         for alarm in data.get('alarms'):
-            if alarm.get("Priority").lower().startswith(priority.split()[0].lower()):
+            if alarm.get("Alarm Class").split('_')[0].lower().startswith(priority.split()[0].lower()):
                 result.append(alarm)
         data['alarms'] = result
     return data
