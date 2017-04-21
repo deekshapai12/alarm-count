@@ -31,7 +31,7 @@ def webhook():
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
-    # print(res)
+    print(res)
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
@@ -61,10 +61,6 @@ def filterResult(data,parameters):
     data['alarms'] = result
     for alarm in data.get('alarms'):
         if ackState:
-            if ackState.lower().startswith('unack'):
-                ackState = 'unacked'
-            if ackState.lower().startswith('ack'):
-                ackState = 'acked'
             if alarm.get("Ack State").lower() == ackState:
                 result.append(alarm)
     data['alarms'] = result
@@ -77,37 +73,30 @@ def filterResult(data,parameters):
 
 
 def makeWebhookResult(data,parameters):
-    query = data.get('query')
-    if query is None:
-        return {}
-
-    result = query.get('results')
-    if result is None:
-        return {}
-    alarms = query.get('alarms')
+    alarms = data.get('alarms')
     if alarms is None:
         return {}
     # print(json.dumps(item, indent=4))
     sourceState = parameters.get("source-state")
     ackState = parameters.get("ack-state")
     priority = parameters.get("priority")
-    speech = "There are "+len(alarms)+"having"
+    speech = "There are "+str(len(alarms))+" alarm(s) having"
     joint = " "
     count = 0
     if sourceState:
         if count>0:
             joint=" and "
-        speech+=joint+sourceState+" as source state"
+        speech+=joint+"source state as "+sourceState.upper()
         count+=1
     if ackState:
         if count>0:
             joint=" and "
-        speech+=joint+ackState+" as acknowledgement state"
+        speech+=joint+"as acknowledgement state "+ackState.upper()
         count+=1
     if priority:
         if count>0:
             joint=" and "
-        speech+=joint+priority+" priority"
+        speech+=joint+priority.split()[0].upper()+" priority"
         count+=1
 
     print("Response:")
@@ -118,7 +107,7 @@ def makeWebhookResult(data,parameters):
         "displayText": speech,
         # "data": data,
         # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
+        "source": "random JSON data"
     }
 
 
