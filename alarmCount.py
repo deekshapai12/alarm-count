@@ -61,7 +61,7 @@ def filterResult(data,parameters):
     data['alarms'] = result
     for alarm in data.get('alarms'):
         if ackState:
-            if alarm.get("Ack State").lower() == ackState:
+            if alarm.get("Ack State").lower() == ackState.lower():
                 result.append(alarm)
     data['alarms'] = result
     for alarm in data.get('alarms'):
