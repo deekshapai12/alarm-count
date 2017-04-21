@@ -54,21 +54,23 @@ def filterResult(data,parameters):
     ackState = parameters.get("ack-state")
     priority = parameters.get("priority")
     result = []
-    for alarm in data.get('alarms'):
-        if sourceState:
+    if sourceState != '':
+        for alarm in data.get('alarms'):
             if alarm.get("Source State").lower() == sourceState.lower():
                 result.append(alarm)
-    data['alarms'] = result
-    for alarm in data.get('alarms'):
-        if ackState:
+        data['alarms'] = result
+    result = []
+    if ackState != '':
+        for alarm in data.get('alarms'):
             if alarm.get("Ack State").lower() == ackState.lower():
                 result.append(alarm)
-    data['alarms'] = result
-    for alarm in data.get('alarms'):
-        if priority:
+        data['alarms'] = result
+    result = []
+    if priority != '':
+        for alarm in data.get('alarms'):
             if alarm.get("Priority").lower().startswith(priority.split()[0].lower()):
                 result.append(alarm)
-    data['alarms'] = result
+        data['alarms'] = result
     return data
 
 
@@ -80,7 +82,12 @@ def makeWebhookResult(data,parameters):
     sourceState = parameters.get("source-state")
     ackState = parameters.get("ack-state")
     priority = parameters.get("priority")
-    speech = "There are "+str(len(alarms))+" alarm(s) having"
+    speech = "There"
+    count = len(alarms)
+    if count == 1:
+        speech+=" is 1 alarm having"
+    else:
+        speech+=" are "+str(count)+" alarms having"
     joint = " "
     count = 0
     if sourceState:
@@ -91,16 +98,16 @@ def makeWebhookResult(data,parameters):
     if ackState:
         if count>0:
             joint=" and "
-        speech+=joint+"as acknowledgement state "+ackState.upper()
+        speech+=joint+"acknowledgement state as "+ackState.upper()
         count+=1
     if priority:
         if count>0:
             joint=" and "
-        speech+=joint+priority.split()[0].upper()+" priority"
+        speech+=joint+"priority as "+priority.split()[0].upper()
         count+=1
 
-    print("Response:")
-    print(speech)
+    # print("Response:")
+    # print(speech)
 
     return {
         "speech": speech,
