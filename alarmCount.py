@@ -53,6 +53,8 @@ def filterResult(data,parameters):
     sourceState = parameters.get("source-state")
     ackState = parameters.get("ack-state")
     priority = parameters.get("priority")
+    if sourceState == '' and ackState == '' and priority == '':
+        return data
     result = []
     if sourceState != '':
         for alarm in data.get('alarms'):
@@ -85,26 +87,31 @@ def makeWebhookResult(data,parameters):
     speech = "There"
     count = len(alarms)
     if count == 1:
-        speech+=" is 1 alarm having"
+        speech+=" is 1 alarm"
     else:
-        speech+=" are "+str(count)+" alarms having"
-    joint = " "
-    count = 0
-    if sourceState:
-        if count>0:
-            joint=" and "
-        speech+=joint+"source state as "+sourceState.upper()
-        count+=1
-    if ackState:
-        if count>0:
-            joint=" and "
-        speech+=joint+"acknowledgement state as "+ackState.upper()
-        count+=1
-    if priority:
-        if count>0:
-            joint=" and "
-        speech+=joint+"priority as "+priority.split()[0].upper()
-        count+=1
+        speech+=" are "+str(count)+" alarms"
+    if not sourceState and not ackState and not priority:
+        speech+=" in total"
+    else:
+        speech+=" having "
+        joint = " "
+        count = 0
+
+        if sourceState:
+            if count>0:
+                joint=" and "
+            speech+=joint+"source state as "+sourceState.upper()
+            count+=1
+        if ackState:
+            if count>0:
+                joint=" and "
+            speech+=joint+"acknowledgement state as "+ackState.upper()
+            count+=1
+        if priority:
+            if count>0:
+                joint=" and "
+            speech+=joint+"priority as "+priority.split()[0].upper()
+            count+=1
 
     # print("Response:")
     # print(speech)
@@ -116,7 +123,6 @@ def makeWebhookResult(data,parameters):
         # "contextOut": [],
         "source": "random JSON data"
     }
-
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
