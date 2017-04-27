@@ -87,7 +87,8 @@ def processRequest(req):
     data = json.loads(result)
     parameters = req.get("result").get("parameters")
     data = filterResult(data,parameters)
-    res = makeWebhookResult(data,parameters)
+    actionName = req.get("result").get("action")
+    res = makeWebhookResult(actionName,data,parameters)
     return res
 
 
@@ -148,7 +149,7 @@ def filterResult(data,parameters):
 
 
 
-def makeWebhookResult(data,parameters):
+def makeWebhookResult(actionName,data,parameters):
     alarms = data.get('alarms')
     if alarms is None:
         return {}
@@ -158,7 +159,7 @@ def makeWebhookResult(data,parameters):
     priority = parameters.get("priority")
     numberWord = parameters.get("number")
     ordinal = parameters.get("ordinal")
-    if req.get("result").get("action") == "alarmCount":
+    if actionName == "alarmCount":
         speech = "There"
         count = len(alarms)
         if count == 1:
@@ -187,39 +188,35 @@ def makeWebhookResult(data,parameters):
                 speech+=joint+"priority as "+priority.split()[0].upper()
                 count+=1
 
-    elif req.get("result").get("action") == "fixAlarms":
-        speech = "The following steps need to be followed to fix "
-        if ordinal:
-            speech+="the "+ordinal+" "
-        speech += "alarm."
-        if numberWord != '' and not ordinal:
+    elif actionName == "fixAlarms":
+        speech = "The following steps need to be followed to fix the "
+        if ordinal != '':
+            speech+=ordinal
+        speech += " alarm "
+        if numberWord != '' :
             speech+=numberWord+" "
+        speech+='having '
         joint = " "
         count = 0
         if sourceState:
-            if count == 0:
-                speech += "having "
             if count>0:
                 joint=" and "
             speech+=joint+"source state as "+sourceState.upper()
             count+=1
         if ackState:
-            if count == 0:
-                speech += "having "
             if count>0:
                 joint=" and "
             speech+=joint+"acknowledgement state as "+ackState.upper()
             count+=1
         if priority:
-            if count == 0:
-                speech += "having "
             if count>0:
                 joint=" and "
             speech+=joint+"priority as "+priority.split()[0].upper()
             count+=1
-        speech+=" "+data.get("alarms")[0].get("Fix")
-    # elif req.get("result").get("action") == "getAlarm":
-    # elif req.get("result").get("action") == "getLatestAlarm":
+        speech+=" "+data.get("alarms")[0].get("fix")
+
+    # elif actionName == "getAlarm":
+    # elif actionName == "getLatestAlarm":
 
 
     # print("Response:")
