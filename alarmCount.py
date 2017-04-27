@@ -187,7 +187,7 @@ def makeWebhookResult(data,parameters):
                 speech+=joint+"priority as "+priority.split()[0].upper()
                 count+=1
 
-    elif req.get("result").get("action") == "fixAlarm":
+    elif req.get("result").get("action") == "fixAlarms":
         speech = "The following steps need to be followed to fix the "
         if ordinal != '':
             speech+=ordinal
