@@ -86,8 +86,9 @@ def processRequest(req):
     result = urlopen(baseurl).read().decode()
     data = json.loads(result)
     parameters = req.get("result").get("parameters")
-    data = filterResult(data,parameters)
+    print("parameters : ")
     print(parameters)
+    data = filterResult(data,parameters)
     actionName = req.get("result").get("action")
     res = makeWebhookResult(actionName,data,parameters)
     return res
