@@ -188,32 +188,36 @@ def makeWebhookResult(data,parameters):
                 count+=1
 
     elif req.get("result").get("action") == "fixAlarms":
-        speech = "The following steps need to be followed to fix the "
-        if ordinal != '':
-            speech+=ordinal
-        speech += " alarm "
-        if numberWord != '' :
+        speech = "The following steps need to be followed to fix "
+        if ordinal:
+            speech+="the "+ordinal+" "
+        speech += "alarm."
+        if numberWord != '' and not ordinal:
             speech+=numberWord+" "
-        speech+='having '
         joint = " "
-            count = 0
-            if sourceState:
-                if count>0:
-                    joint=" and "
-                speech+=joint+"source state as "+sourceState.upper()
-                count+=1
-            if ackState:
-                if count>0:
-                    joint=" and "
-                speech+=joint+"acknowledgement state as "+ackState.upper()
-                count+=1
-            if priority:
-                if count>0:
-                    joint=" and "
-                speech+=joint+"priority as "+priority.split()[0].upper()
-                count+=1
-        speech+=" "+data.get("alarms")[0].get("fix")
-
+        count = 0
+        if sourceState:
+            if count == 0:
+                speech += "having "
+            if count>0:
+                joint=" and "
+            speech+=joint+"source state as "+sourceState.upper()
+            count+=1
+        if ackState:
+            if count == 0:
+                speech += "having "
+            if count>0:
+                joint=" and "
+            speech+=joint+"acknowledgement state as "+ackState.upper()
+            count+=1
+        if priority:
+            if count == 0:
+                speech += "having "
+            if count>0:
+                joint=" and "
+            speech+=joint+"priority as "+priority.split()[0].upper()
+            count+=1
+        speech+=" "+data.get("alarms")[0].get("Fix")
     # elif req.get("result").get("action") == "getAlarm":
     # elif req.get("result").get("action") == "getLatestAlarm":
 
