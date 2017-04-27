@@ -82,8 +82,10 @@ def ord2int(textnum):
     return ordinal(textnum)
 
 def processRequest(req):
-    baseurl = "https://dl.dropboxusercontent.com/s/l3kdftm9jlq479w/db.json?dl=0"
+    baseurl = "http://3e1f6cb8.ngrok.io"
     result = urlopen(baseurl).read().decode()
+    print("result :")
+    print(result)
     data = json.loads(result)
     parameters = req.get("result").get("parameters")
     print("parameters : ")
