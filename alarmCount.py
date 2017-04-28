@@ -83,6 +83,7 @@ def ord2int(textnum):
 
 def processRequest(req):
     baseurl = "http://3e1f6cb8.ngrok.io"
+    baseurl.add_header("Authorization","Basic RGVla3NoYTpUcmlkaXVtMTIz");
     result = urlopen(baseurl).read().decode()
     print("result :")
     print(result)
@@ -94,7 +95,6 @@ def processRequest(req):
     actionName = req.get("result").get("action")
     res = makeWebhookResult(actionName,data,parameters)
     return res
-
 
 def filterResult(data,parameters):
     sourceState = parameters.get("source-state")
