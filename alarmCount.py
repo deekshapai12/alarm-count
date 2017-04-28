@@ -12,6 +12,7 @@ from urllib.error import HTTPError
 
 import json
 import os
+import requests
 
 from flask import Flask
 from flask import request
@@ -82,13 +83,11 @@ def ord2int(textnum):
     return ordinal(textnum)
 
 def processRequest(req):
-    try:
-    baseurl = Request("http://aacb9261.ngrok.io")
-    baseurl.add_header("Authorization","Basic R0h0ZXN0OlRyaWRpdW0xMjM=");
+    baseurl = "http://aacb9261.ngrok.io"
     print("Firing request for data")
-    result = urlopen(baseurl).read().decode()
-    except urllib.error.HTTPError as err:
-    print("Error : " +err.code + " " + err.reason)
+    post_fields = {'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}
+    h = {"Authorization","Basic R0h0ZXN0OlRyaWRpdW0xMjM="}
+    result = request.post(baseurl, headers=h, data=json.dumps(post_fields))
     print("Result : ")
     print(result)
     data = json.loads(result)
