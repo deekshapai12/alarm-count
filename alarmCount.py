@@ -82,19 +82,20 @@ def ord2int(textnum):
     return ordinal(textnum)
 
 def processRequest(req):
-    baseurl = "http://3e1f6cb8.ngrok.io"
-    baseurl.add_header("Authorization","Basic RGVla3NoYTpUcmlkaXVtMTIz");
+    baseurl = Request("http://aacb9261.ngrok.io/na?json={'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}")
+    baseurl.add_header("Authorization","Basic R0h0ZXN0OlRyaWRpdW0xMjM");
     result = urlopen(baseurl).read().decode()
-    print("result :")
+    print("Result : ")
     print(result)
     data = json.loads(result)
-    parameters = req.get("result").get("parameters")
-    print("parameters : ")
-    print(parameters)
-    data = filterResult(data,parameters)
-    actionName = req.get("result").get("action")
-    res = makeWebhookResult(actionName,data,parameters)
-    return res
+    responses = req.get("result").get("responses")
+    print("responses : ")
+    print(responses[0].value)
+    #data = filterResult(data,parameters)
+    #actionName = req.get("result").get("action")
+    #res = makeWebhookResult(actionName,data,parameters)
+    #return res
+
 
 def filterResult(data,parameters):
     sourceState = parameters.get("source-state")
@@ -163,34 +164,9 @@ def makeWebhookResult(actionName,data,parameters):
     priority = parameters.get("priority")
     numberWord = parameters.get("number")
     ordinal = parameters.get("ordinal")
-    if actionName == "alarmCount":
-        speech = "There"
-        count = len(alarms)
-        if count == 1:
-            speech+=" is 1 alarm"
-        else:
-            speech+=" are "+str(count)+" alarms"
-        if not sourceState and not ackState and not priority:
-            speech+=" in total"
-        else:
-            speech+=" having "
-            joint = " "
-            count = 0
-            if sourceState:
-                if count>0:
-                    joint=" and "
-                speech+=joint+"source state as "+sourceState.upper()
-                count+=1
-            if ackState:
-                if count>0:
-                    joint=" and "
-                speech+=joint+"acknowledgement state as "+ackState.upper()
-                count+=1
-            if priority:
-                if count>0:
-                    joint=" and "
-                speech+=joint+"priority as "+priority.split()[0].upper()
-                count+=1
+    if actionName == "getLatestAlarms":
+        speech = "
+        
 
     elif actionName == "fixAlarms":
         speech = "The following steps need to be followed to fix the "
