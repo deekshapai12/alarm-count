@@ -83,7 +83,6 @@ def ord2int(textnum):
 
 def processRequest(req):
     baseurl = "http://3e1f6cb8.ngrok.io"
-    baseurl.add_header("Authorization","Basic RGVla3NoYTpUcmlkaXVtMTIz");
     result = urlopen(baseurl).read().decode()
     print("result :")
     print(result)
