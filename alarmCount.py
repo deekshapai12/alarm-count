@@ -88,8 +88,8 @@ def processRequest(req):
     
     post_fields = {'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}
     print("Firing request for data")
-    with closing(urlopen(baseurl, json.dumps(post_fields))) as response:
-    result=response.read().decode()
+    r=urlopen(baseurl, json.dumps(post_fields)))
+    result=r.read().decode()
     print("Result : ")
     print(result)
     data = json.loads(result)
