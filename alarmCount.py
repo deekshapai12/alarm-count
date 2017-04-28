@@ -164,9 +164,34 @@ def makeWebhookResult(actionName,data,parameters):
     priority = parameters.get("priority")
     numberWord = parameters.get("number")
     ordinal = parameters.get("ordinal")
-    if actionName == "getLatestAlarms":
-        speech = "
-        
+    if actionName == "alarmCount":
+        speech = "There"
+        count = len(alarms)
+        if count == 1:
+            speech+=" is 1 alarm"
+        else:
+            speech+=" are "+str(count)+" alarms"
+        if not sourceState and not ackState and not priority:
+            speech+=" in total"
+        else:
+            speech+=" having "
+            joint = " "
+            count = 0
+            if sourceState:
+                if count>0:
+                    joint=" and "
+                speech+=joint+"source state as "+sourceState.upper()
+                count+=1
+            if ackState:
+                if count>0:
+                    joint=" and "
+                speech+=joint+"acknowledgement state as "+ackState.upper()
+                count+=1
+            if priority:
+                if count>0:
+                    joint=" and "
+                speech+=joint+"priority as "+priority.split()[0].upper()
+                count+=1
 
     elif actionName == "fixAlarms":
         speech = "The following steps need to be followed to fix the "
