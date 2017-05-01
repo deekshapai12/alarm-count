@@ -79,7 +79,7 @@ def ord2int(textnum):
         'nineteenth':19,
         'twentieth':20,
     }
-    return ordinal(textnum)
+    return ordinal[textnum]
 
 def processRequest(req):
     baseurl = Request("http://aacb9261.ngrok.io")
@@ -92,13 +92,13 @@ def processRequest(req):
     print("Result : ")
     print(result)
     data = json.loads(result)
-    responses = req.get("result").get("responses")
-    print("responses : ")
-    print(responses[0].value)
-    #data = filterResult(data,parameters)
-    #actionName = req.get("result").get("action")
-    #res = makeWebhookResult(actionName,data,parameters)
-    #return res
+    # responses = req.get("result").get("responses")
+    # print("responses : ")
+    # print(responses[0].value)
+    data = filterResult(data,parameters)
+    actionName = req.get("result").get("action")
+    res = makeWebhookResult(actionName,data,parameters)
+    return res
 
 
 def filterResult(data,parameters):
@@ -136,7 +136,7 @@ def filterResult(data,parameters):
                 result = data.get('alarms')[-1]
             else:
                 number = ord2int(ordinal)
-                data['alarms'] = data.get('alarms')[0:number]
+                data['alarms'] = data.get('alarms')[number]
         else:
             number = text2int(numberWord)
             if ordinal == '':
@@ -149,7 +149,7 @@ def filterResult(data,parameters):
                 if number < len(data):
                     data['alarms'] = data.get('alarms')[number-1:len(data)]
     elif ordinal != '':
-        if ordinal == 'last':
+        if ordinal == 'last' or ordinal == 'latest':
             data['alarms'] = data.get('alarms')[-1]
         else:
             number = ord2int(ordinal)
@@ -224,9 +224,15 @@ def makeWebhookResult(actionName,data,parameters):
             count+=1
         speech+=" "+data.get("alarms")[0].get("fix")
 
-    # elif actionName == "getAlarm":
-    # elif actionName == "getLatestAlarm":
-
+    elif actionName == "getAlarm" or actionName == "getLatestAlarm":
+        alarm = data.get("alarms")[0]
+        ack = alarm.get("Ack State")
+        if ack.beginswith("un"):
+            ack="unacknowledged"
+        else:
+            ack="acknowledged"
+        priority_class=" ".join(alarm.get("Alarm Class").split("_")[:2])
+        speech="This alarm is "+alarm.get("Source State")+", "+ack+" and "+priority_class+" with a priority of "+alarm.get("Priority")
 
     # print("Response:")
     # print(speech)
