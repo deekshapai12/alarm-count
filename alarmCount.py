@@ -46,8 +46,8 @@ def processRequest(req):
     #result=r.read().decode()
    # result = urlopen(baseurl).read().decode()
     resp = requests.post("http://52bcca08.ngrok.io/na", 
-    data={'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}, 
-    headers={'Authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM='}, auth=('GHtest', 'Tridium123'))
+    data={'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]},
+    auth=('GHtest', 'Tridium123'), headers={'Authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM='})
     print("Result : ")
     print(resp)
     data = json.loads(resp)
