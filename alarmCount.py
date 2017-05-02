@@ -58,8 +58,8 @@ def processRequest(req):
     
     print("Response is :")
     print(response)
-    data= json.loads(response)
     print("Data is :")
+    data= json.loads(response)
     print(data)
     actionName = req.get("result").get("action")
     res = makeWebhookResult(actionName,data,parameters)
