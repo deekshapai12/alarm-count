@@ -49,9 +49,9 @@ def processRequest(req):
 
     payload = "{'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}"
     headers = {
-        'authorization': "Basic R0h0ZXN0OlRyaWRpdW0xMjM=",
-        'cache-control': "no-cache",
-        'postman-token': "92f011e4-edb2-ef79-a30c-2181b4159a08"
+        'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
+        'cache-control': 'no-cache',
+        'postman-token': '92f011e4-edb2-ef79-a30c-2181b4159a08'
         }
 
     response = requests.request("POST", url, data=payload, headers=headers)
