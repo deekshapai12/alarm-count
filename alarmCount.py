@@ -51,7 +51,7 @@ def processRequest(req):
     data= json.loads(response.text)
     actionName = req.get("result").get("action")
     print("The action invoked is :" + actionName)
-    print(data)
+    print(data.json())
     res = makeSpeechResponse(actionName,data)
     return res
 
