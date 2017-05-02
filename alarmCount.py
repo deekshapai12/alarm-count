@@ -83,13 +83,13 @@ def ord2int(textnum):
 
 def processRequest(req):
     baseurl = Request("http://52bcca08.ngrok.io/na")
-   # baseurl.add_header("Authorization","Basic R0h0ZXN0OlRyaWRpdW0xMjM=")
+    baseurl.add_header("Authorization","Basic R0h0ZXN0OlRyaWRpdW0xMjM=")
     
-   # post_fields = {'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}
+   post_fields = {'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}
     print("Firing request for data")
-   # r=urlopen(baseurl, json.dumps(post_fields))
-    #result=r.read().decode()
-    result = urlopen(baseurl).read().decode()
+    r=urlopen(baseurl, json.dumps(post_fields))
+    result=r.read().decode()
+   # result = urlopen(baseurl).read().decode()
     print("Result : ")
     print(result)
     print("Result : ")
