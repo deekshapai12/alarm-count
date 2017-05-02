@@ -52,11 +52,12 @@ def processRequest(req):
     actionName = req.get("result").get("action")
     print("The action invoked is :" + actionName)
     print(data.json())
-    res = makeSpeechResponse(actionName,data)
-    return res
+    
+    #res = makeSpeechResponse(actionName,data)
+    #return res
 
-def makeSpeechResponse(actionName,data):
-    print("Data is : "+data)
+#def makeSpeechResponse(actionName,data):
+    #print("Data is : "+data)
     if actionName == "totalEnergy": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
