@@ -92,8 +92,6 @@ def processRequest(req):
    # result = urlopen(baseurl).read().decode()
     print("Result : ")
     print(result)
-    print("Result : ")
-    print(result)
     data = json.loads(result)
     # responses = req.get("result").get("responses")
     # print("responses : ")
