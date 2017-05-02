@@ -55,15 +55,17 @@ def processRequest(req):
 
 def makeSpeechResponse(actionName,data):
     if actionName == "totalEnergy": 
-    total = data.["responses"][0]["value"]
-    total = math.ceil(float(total))
-    speech = "The total energy consumption for Bangalore orion campus today is " + total
+        total = data.["responses"][0]["value"]
+        total = math.ceil(float(total))
+         speech = "The total energy consumption for Bangalore orion campus today is " + total
     return {
         "speech": speech,
         "displayText": speech,
         "source": "Niagara"
     }
 
+   
+    
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
 
