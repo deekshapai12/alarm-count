@@ -90,10 +90,12 @@ def processRequest(req):
     #r=urlopen(baseurl, json.dumps(post_fields))
     #result=r.read().decode()
    # result = urlopen(baseurl).read().decode()
-    resp = requests.post("http://52bcca08.ngrok.io/na", data={'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}, auth=('GHtest', 'Tridium123'))
+    resp = requests.post("http://52bcca08.ngrok.io/na", 
+    data={'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}, 
+      headers={'Authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM='})
     print("Result : ")
-    print(result)
-    data = json.loads(result)
+    print(resp)
+    data = json.loads(resp)
     # responses = req.get("result").get("responses")
     # print("responses : ")
     # print(responses[0].value)
