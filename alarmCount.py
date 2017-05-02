@@ -40,6 +40,7 @@ def webhook():
 
 def processRequest(req):
     url = "http://52bcca08.ngrok.io/na"
+    actionName = req.get("result").get("action")
     if actionName == "totalEnergy": 
         payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
     elif actionName == "demand":
@@ -51,7 +52,6 @@ def processRequest(req):
         }
     response = requests.request("POST", url, data=payload, headers=headers)
     data= json.loads(response.text)
-    actionName = req.get("result").get("action")
     res = makeSpeechResponse(actionName,data)
     return res
 
