@@ -55,8 +55,10 @@ def processRequest(req):
     return res
 
 def makeSpeechResponse(actionName,data):
+    print("Data is : "+data)
     if actionName == "totalEnergy": 
         total = data["responses"][0]["value"]
+        print("Total is : " + total)
         total = math.ceil(float(total))
         speech = "The total energy consumption for Bangalore orion campus today is " + total
     return {
