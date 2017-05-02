@@ -45,7 +45,7 @@ def processRequest(req):
     #r=urlopen(baseurl, json.dumps(post_fields))
     #result=r.read().decode()
    # result = urlopen(baseurl).read().decode()
-    url = ("http://52bcca08.ngrok.io/na")
+    url = "http://52bcca08.ngrok.io/na"
 
     payload = "{'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}"
     headers = {
