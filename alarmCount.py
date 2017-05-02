@@ -46,29 +46,27 @@ def processRequest(req):
         'cache-control': 'no-cache',
         'postman-token': '92f011e4-edb2-ef79-a30c-2181b4159a08'
         }
-
     response = requests.request("POST", url, data=payload, headers=headers)
     data= json.loads(response.text)
     actionName = req.get("result").get("action")
-    print(data.json())
-    #res = makeSpeechResponse(actionName,data)
-    #return res
+    print("The action invoked is :" + actionName)
+    print(data)
+    res = makeSpeechResponse(actionName,data)
+    return res
 
-    
-#def makeSpeechResponse(actionName,data):
-    print("Data is : "+data)
+def makeSpeechResponse(actionName,data):
+    print("Data is : ")
+    print(data)
     if actionName == "totalEnergy": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
         total = math.ceil(float(total))
-        speech = "The total energy consumption for Bangalore orion campus today is " + total
+        speech = "The total energy consumption for Bangalore orion campus today is " + str(total)
     return {
         "speech": speech,
         "displayText": speech,
         "source": "Niagara"
-    }
-
-   
+}   
     
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
