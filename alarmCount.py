@@ -57,6 +57,8 @@ def processRequest(req):
     response = requests.request("POST", url, data=payload, headers=headers)
 
     print(response.text)
+    data= json.loads(response.text)
+    print(data)
     actionName = req.get("result").get("action")
     res = makeWebhookResult(actionName,data,parameters)
     return res
