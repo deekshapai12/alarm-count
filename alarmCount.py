@@ -57,7 +57,7 @@ def processRequest(req):
     response = requests.request("POST", url, data=payload, headers=headers)
     
     print("Response is :")
-    print(response)
+    print(response.text)
     print("Data is :")
     data= json.loads(response)
     print(data)
