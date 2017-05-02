@@ -56,7 +56,7 @@ def processRequest(req):
 
     
 #def makeSpeechResponse(actionName,data):
-    #print("Data is : "+data)
+    print("Data is : "+data)
     if actionName == "totalEnergy": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
