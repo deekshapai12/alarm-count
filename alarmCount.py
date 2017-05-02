@@ -50,14 +50,15 @@ def processRequest(req):
     response = requests.request("POST", url, data=payload, headers=headers)
     data= json.loads(response.text)
     actionName = req.get("result").get("action")
+    print("The action invoked is :" + actionName)
     res = makeSpeechResponse(actionName,data)
     return res
 
 def makeSpeechResponse(actionName,data):
     if actionName == "totalEnergy": 
-        total = data.["responses"][0]["value"]
+        total = data["responses"][0]["value"]
         total = math.ceil(float(total))
-         speech = "The total energy consumption for Bangalore orion campus today is " + total
+        speech = "The total energy consumption for Bangalore orion campus today is " + total
     return {
         "speech": speech,
         "displayText": speech,
