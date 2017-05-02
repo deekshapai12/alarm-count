@@ -49,12 +49,8 @@ def processRequest(req):
     data={"requests":[{"message":"GetRollup","node":"slot:/TestPoints/Bangalore","data":"n:history","timeRange":"today","rollup":"max"}]},
     auth=('GHtest', 'Tridium123'), headers={'Authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM='})
     print("Result : ")
-    print(resp)
     data = json.loads(resp)
-    # responses = req.get("result").get("responses")
-    # print("responses : ")
-    # print(responses[0].value)
-    #data = filterResult(data,parameters)
+    print(data)
     actionName = req.get("result").get("action")
     res = makeWebhookResult(actionName,data,parameters)
     return res
