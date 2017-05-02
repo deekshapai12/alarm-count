@@ -45,9 +45,9 @@ def processRequest(req):
     #r=urlopen(baseurl, json.dumps(post_fields))
     #result=r.read().decode()
    # result = urlopen(baseurl).read().decode()
-    url = ("http://52bcca08.ngrok.io/na")
+    url = "http://52bcca08.ngrok.io/na"
 
-    payload = "{'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}"
+    payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"station slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
@@ -59,7 +59,7 @@ def processRequest(req):
     print("Response is :")
     print(response.text)
     print("Data is :")
-    data= json.loads(response)
+    data= json.loads(response.text)
     print(data)
     actionName = req.get("result").get("action")
     res = makeWebhookResult(actionName,data,parameters)
