@@ -50,12 +50,11 @@ def processRequest(req):
     response = requests.request("POST", url, data=payload, headers=headers)
     data= json.loads(response.text)
     actionName = req.get("result").get("action")
-    print("The action invoked is :" + actionName)
     print(data.json())
-    
     #res = makeSpeechResponse(actionName,data)
     #return res
 
+    
 #def makeSpeechResponse(actionName,data):
     #print("Data is : "+data)
     if actionName == "totalEnergy": 
