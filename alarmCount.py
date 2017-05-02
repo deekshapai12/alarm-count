@@ -50,7 +50,7 @@ def processRequest(req):
     auth=('GHtest', 'Tridium123'), headers={'Authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM='})
     print("Response is: " + resp)
     print("Result is: " + resp.text)
-    data= resp.json()
+    data = json.loads(resp.text)
     print(data)
     actionName = req.get("result").get("action")
     res = makeWebhookResult(actionName,data,parameters)
