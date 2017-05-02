@@ -47,7 +47,7 @@ def processRequest(req):
    # result = urlopen(baseurl).read().decode()
     url = "http://52bcca08.ngrok.io/na"
 
-    payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"station slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
+    payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
