@@ -12,7 +12,8 @@ from urllib.error import HTTPError
 
 import json
 import os
-import requests 
+import requests
+import math
 
 from flask import Flask
 from flask import request
@@ -53,8 +54,7 @@ def processRequest(req):
     return res
 
 def makeSpeechResponse(actionName,data):
-    if actionName == "totalEnergy":
-        
+    if actionName == "totalEnergy": 
     total = data.["responses"][0]["value"]
     total = math.ceil(float(total))
     speech = "The total energy consumption for Bangalore orion campus today is " + total
