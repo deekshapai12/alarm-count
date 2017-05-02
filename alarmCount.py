@@ -40,7 +40,10 @@ def webhook():
 
 def processRequest(req):
     url = "http://52bcca08.ngrok.io/na"
-    payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
+    if actionName == "totalEnergy": 
+        payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
+    elif actionName == "demand":
+        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
