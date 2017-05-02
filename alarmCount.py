@@ -48,10 +48,10 @@ def processRequest(req):
         }
 
     response = requests.request("POST", url, data=payload, headers=headers)
-    print(response.text)
     data= json.loads(response.text)
     actionName = req.get("result").get("action")
     print("The action invoked is :" + actionName)
+    print(data)
     res = makeSpeechResponse(actionName,data)
     return res
 
