@@ -12,6 +12,7 @@ from urllib.error import HTTPError
 
 import json
 import os
+import requests 
 
 from flask import Flask
 from flask import request
@@ -82,14 +83,14 @@ def ord2int(textnum):
     return ordinal[textnum]
 
 def processRequest(req):
-    baseurl = Request("http://52bcca08.ngrok.io/na")
-    baseurl.add_header("Authorization","Basic R0h0ZXN0OlRyaWRpdW0xMjM=")
-    
-   post_fields = {'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}
-    print("Firing request for data")
-    r=urlopen(baseurl, json.dumps(post_fields))
-    result=r.read().decode()
+    #baseurl = Request("http://52bcca08.ngrok.io/na")
+    #baseurl.add_header("Authorization","Basic R0h0ZXN0OlRyaWRpdW0xMjM=")
+    #post_fields = {'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}
+    #print("Firing request for data")
+    #r=urlopen(baseurl, json.dumps(post_fields))
+    #result=r.read().decode()
    # result = urlopen(baseurl).read().decode()
+    resp = requests.post("http://52bcca08.ngrok.io/na", data={'requests':[{'message':'GetRollup','node':'station slot:/TestPoints/Bangalore','data':'n:history','timeRange':'today','rollup':'sum'}]}, auth=('GHtest', 'Tridium123'))
     print("Result : ")
     print(result)
     data = json.loads(result)
