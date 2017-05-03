@@ -40,8 +40,7 @@ def webhook():
 
 
 def processRequest(req):
-    url = "http://request.headers['hostname']/na"
-    print("Printing the url")
+    url = "http://"+request.headers['hostname']+"/na"
     print(url)
     actionName = req.get("result").get("action")
     if actionName == "totalEnergy": 
