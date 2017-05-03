@@ -40,7 +40,8 @@ def webhook():
 
 
 def processRequest(req):
-    url = "http://52bcca08.ngrok.io/na"
+    url = "http://request.headers['hostname']/na"
+    print(url)
     actionName = req.get("result").get("action")
     if actionName == "totalEnergy": 
         payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
