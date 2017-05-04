@@ -80,7 +80,7 @@ def makeSpeechResponse(actionName,data):
         print("Total is : " + total)
         total = math.ceil(float(total))
         speech = "The current demand is " + str(total)
-    elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "alarmInstruction" or actionName == "similarAlarm" or actionName == "yes" or actionName == "stop":
+    elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "alarmInstruction" or actionName == "similarAlarm" or actionName == "yes":
         speech = data.get("message")[0]
         print("Speech is : " + speech)
     return {
