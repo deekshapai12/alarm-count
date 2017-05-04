@@ -47,7 +47,7 @@ def processRequest(req):
     elif actionName == "demand":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == " allAlarmCount":
-        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
+        payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
     elif actionName == "AllCriticalAlarms":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "alarmInstruction":
