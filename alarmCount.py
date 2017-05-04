@@ -46,21 +46,21 @@ def processRequest(req):
         payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
     elif actionName == "demand":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == " allAlarmCount":
+    elif actionName == " allAlarmCount":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == "AllCriticalAlarms":
+    elif actionName == "AllCriticalAlarms":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == "alarmDisplay":
+    elif actionName == "alarmDisplay":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == "similarAlarm":
+    elif actionName == "similarAlarm":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == "alarmDisplay":
+    elif actionName == "alarmDisplay":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == " controlLogic":
+    elif actionName == "controlLogic":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == "yes":
+    elif actionName == "yes":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-        elif actionName == "stop":
+    elif actionName == "stop":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
@@ -79,6 +79,46 @@ def makeSpeechResponse(actionName,data):
         total = math.ceil(float(total))
         speech = "The total energy consumption for Bangalore orion campus today is " + str(total)
     elif actionName == "demand": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "allAlarmCount": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "AllCriticalAlarms": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "alarmDisplay": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "similarAlarm": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "alarmDisplay": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "controlLogic": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "yes": 
+        total = data.get("responses")[0].get("value")
+        print("Total is : " + total)
+        total = math.ceil(float(total))
+        speech = "The current demand is " + str(total)
+    elif actionName == "stop": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
         total = math.ceil(float(total))
