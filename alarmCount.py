@@ -40,7 +40,7 @@ def webhook():
 
 
 def processRequest(req):
-    url = "http://"+request.headers['hostname']+"/na"
+    url = "http://"+request.headers['hostname']+"/awsMessage" 
     actionName = req.get("result").get("action")
     if actionName == "totalEnergy": 
         payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
@@ -48,8 +48,8 @@ def processRequest(req):
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == " allAlarmCount":
         payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
-    elif actionName == "AllCriticalAlarms":
-        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
+    elif actionName == "allCriticalAlarms":
+        payload = "{action : \"getAllCriticalAlarms\",params : []}"
     elif actionName == "alarmInstruction":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "similarAlarm":
@@ -83,46 +83,9 @@ def makeSpeechResponse(actionName,data):
         print("Total is : " + total)
         total = math.ceil(float(total))
         speech = "The current demand is " + str(total)
-    elif actionName == "allAlarmCount": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "There are" + str(total)+"in total. They are"+ str(total)
-    elif actionName == "AllCriticalAlarms": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "There are" + str(total)+"top priority alarms. They are"+ str(total)
-    elif actionName == "alarmInstruction": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
-    elif actionName == "similarAlarm": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
-    elif actionName == "alarmDisplay": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "This is the alarm console" + str(total)
-    elif actionName == "controlLogic": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
-    elif actionName == "yes": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
-    elif actionName == "stop": 
-        total = data.get("responses")[0].get("value")
-        print("Total is : " + total)
-        total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
+    elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms":
+        speech = data.get("message")[0]
+        print("Speech is : " + speech)
     return {
         "speech": speech,
         "displayText": speech,
