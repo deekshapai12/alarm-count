@@ -50,7 +50,7 @@ def processRequest(req):
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "AllCriticalAlarms":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-    elif actionName == "alarmDisplay":
+    elif actionName == "alarmInstruction":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "similarAlarm":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
@@ -87,17 +87,17 @@ def makeSpeechResponse(actionName,data):
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
         total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
+        speech = "There are" + str(total)+"in total. They are"+ str(total)
     elif actionName == "AllCriticalAlarms": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
         total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
-    elif actionName == "alarmDisplay": 
+        speech = "There are" + str(total)+"top priority alarms. They are"+ str(total)
+    elif actionName == "alarmInstruction": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
         total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
+        speech = "This is the alarm console" + str(total)
     elif actionName == "similarAlarm": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
