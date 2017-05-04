@@ -97,7 +97,7 @@ def makeSpeechResponse(actionName,data):
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
         total = math.ceil(float(total))
-        speech = "This is the alarm console" + str(total)
+        speech = "The current demand is " + str(total)
     elif actionName == "similarAlarm": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
@@ -107,7 +107,7 @@ def makeSpeechResponse(actionName,data):
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
         total = math.ceil(float(total))
-        speech = "The current demand is " + str(total)
+        speech = "This is the alarm console" + str(total)
     elif actionName == "controlLogic": 
         total = data.get("responses")[0].get("value")
         print("Total is : " + total)
