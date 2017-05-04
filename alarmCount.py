@@ -55,14 +55,10 @@ def processRequest(req):
         payload = "{action : \"getAlarmInstruction\",params : [" + alarmIndex + "]}"
     elif actionName == "similarAlarm":
         payload = "{action : \"getSimilarAlarms\",params : []}"
-    elif actionName == "alarmDisplay":
-        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "controlLogic":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "yes":
-        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-    elif actionName == "stop":
-        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
+        payload = "{action : \"yesAction\",params : []}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
@@ -84,7 +80,7 @@ def makeSpeechResponse(actionName,data):
         print("Total is : " + total)
         total = math.ceil(float(total))
         speech = "The current demand is " + str(total)
-    elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "alarmInstruction" or actionName == "similarAlarm":
+    elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "alarmInstruction" or actionName == "similarAlarm" or actionName == "yes" or actionName == "stop":
         speech = data.get("message")[0]
         print("Speech is : " + speech)
     return {
