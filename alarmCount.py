@@ -84,10 +84,10 @@ def makeSpeechResponse(actionName,data):
     elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "similarAlarm":
         speech = data.get("message")[0]
         print("Speech is : " + speech)
-    elif actionName == "alarmInstruction":
-        speech = "Do you want to execute this action"
-        print("Speech is : " + speech)
+    elif actionName == "GetAlarmInstructions.GetAlarmInstructions-yes":
         speech = data.get("message")[0]
+        alarmIndex = data.get("contexts")[0].get("parameters").get("alarmIndex")
+        print("Alarm index is : " + str(alarmIndex))
         print("Speech is : " + speech)      
     return {
         "speech": speech,
