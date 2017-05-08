@@ -46,12 +46,12 @@ def processRequest(req):
         payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
     elif actionName == "demand":
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
-    elif actionName == " allAlarmCount":
+    elif actionName == "allAlarmCount":
         payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
     elif actionName == "allCriticalAlarms":
         payload = "{action : \"getAllCriticalAlarms\",params : []}"
     elif actionName == "alarmInstruction":
-        alarmIndex = req.get("result").get("parameters")
+        alarmIndex = req.get("result").get("parameters").get("alarmIndex")
         payload = "{action : \"getAlarmInstruction\",params : [" + alarmIndex + "]}"
     elif actionName == "similarAlarm":
         payload = "{action : \"getSimilarAlarms\",params : []}"
