@@ -50,8 +50,9 @@ def processRequest(req):
         payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
     elif actionName == "allCriticalAlarms":
         payload = "{action : \"getAllCriticalAlarms\",params : []}"
-    elif actionName == "alarmInstruction":
-        alarmIndex = req.get("result").get("parameters").get("alarmIndex")
+    elif actionName == "alarmInstructions-yes":
+        alarmIndex = req.get("result").get("contexts")[0].get("parameters").get("alarmIndex")
+#         alarmIndex = req.get("result").get("parameters").get("alarmIndex")
         payload = "{action : \"getAlarmInstruction\",params : [" + alarmIndex + "]}"
     elif actionName == "similarAlarm":
         payload = "{action : \"getSimilarAlarms\",params : []}"
@@ -84,10 +85,8 @@ def makeSpeechResponse(actionName,data):
     elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "similarAlarm":
         speech = data.get("message")[0]
         print("Speech is : " + speech)
-    elif actionName == "GetAlarmInstructions.GetAlarmInstructions-yes":
+    elif actionName == "alarmInstructions-yes":
         speech = data.get("message")[0]
-        alarmIndex = data.get("contexts")[0].get("parameters").get("alarmIndex")
-        print("Alarm index is : " + str(alarmIndex))
         print("Speech is : " + speech)      
     return {
         "speech": speech,
