@@ -88,9 +88,7 @@ def makeSpeechResponse(actionName,data):
         speech = "Do you want to execute this action"
         print("Speech is : " + speech)
         speech = data.get("message")[0]
-        print("Speech is : " + speech)
-            
-        
+        print("Speech is : " + speech)      
     return {
         "speech": speech,
         "displayText": speech,
