@@ -66,6 +66,8 @@ def processRequest(req):
         }
     response = requests.request("POST", url, data=payload, headers=headers)
     data= json.loads(response.text)
+    print("data:")
+    print(data)
     res = makeSpeechResponse(actionName,data)
     return res
 
