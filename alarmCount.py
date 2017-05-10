@@ -60,9 +60,9 @@ def processRequest(req):
     elif actionName == "yes":
         payload = "{action : \"yesAction\",params : []}"
     elif actionName == "setVAVStatus":
-        vav-status = req.get("result").get("parameters").get("vav-status")
+        vavStatus = req.get("result").get("parameters").get("vav-status")
         temp = "false"
-        if vav-status == "on":
+        if vavStatus == "on":
             temp = "true"
         payload = "{action : \"setVAVStatus\",params : ["+ temp +"]}"
     elif actionName == "readCurrentTemperature":
@@ -77,9 +77,9 @@ def processRequest(req):
         position = req.get("result").get("parameters").get("position")
         payload = "{action : \"setBlinds\",params : ["+ position +"]}"
     elif actionName == "setMediaStatus":
-        media-status = req.get("result").get("parameters").get("media-status")
+        mediaStatus = req.get("result").get("parameters").get("media-status")
         temp = "false"
-        if media-status == "on":
+        if mediaStatus == "on":
             temp = "true"
         payload = "{action : \"setMediaStatus\",params : ["+ temp +"]}"
     elif actionName == "increaseLightIntensity":
