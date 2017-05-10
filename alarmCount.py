@@ -60,6 +60,39 @@ def processRequest(req):
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "yes":
         payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "setVAVStatus":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "readCurrentTemperature":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "setTemperature":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "setLightIntensity":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "setBlinds":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "setMediaStatus":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "increaseLightIntensity":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "reduceLightIntensity":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "zeroLightIntensity":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "fullLightIntensity":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "increaseCurtainPosition":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "reduceCurtainPosition":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "increaseTemperature":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "decreaseTemperature":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "closeCurtainPosition":
+        payload = "{action : \"yesAction\",params : []}"
+    elif actionName == "openCurtainPosition":
+        payload = "{action : \"yesAction\",params : []}"
+    
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
