@@ -119,7 +119,7 @@ def makeSpeechResponse(actionName,data):
         speech = data.get("message")[0]
         print("Speech is : " + speech)
     elif actionName == "alarmInstructions":
-        speech = data.get("message")[0]
+        speech = data.get("message")[0] + ". Do you want to execute this action" 
         print("Speech is : " + speech)      
     return {
         "speech": speech,
