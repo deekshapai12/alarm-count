@@ -50,7 +50,7 @@ def processRequest(req):
         payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
     elif actionName == "allCriticalAlarms":
         payload = "{action : \"getAllCriticalAlarms\",params : []}"
-    elif actionName == "alarmInstructions"
+    elif actionName == "alarmInstructions":
         alarmIndex = req.get("result").get("parameters").get("alarmIndex")
         payload = "{action : \"getAlarmInstruction\",params : [" + alarmIndex + "]}"
     elif actionName == "similarAlarm":
