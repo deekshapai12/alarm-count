@@ -71,7 +71,7 @@ def processRequest(req):
         temperature = req.get("result").get("parameters").get("temperature")
         payload = "{action : \"setTemperature\",params : ["+ temperature +"]}"
     elif actionName == "setLightIntensity":
-         lightIntensity = req.get("result").get("parameters").get("lightIntensity")
+        lightIntensity = req.get("result").get("parameters").get("lightIntensity")
         payload = "{action : \"setLightIntensity\",params : ["+ lightIntensity +"]}"
     elif actionName == "setBlinds":
         position = req.get("result").get("parameters").get("position")
