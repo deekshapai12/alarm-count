@@ -62,7 +62,7 @@ def processRequest(req):
     elif actionName == "setVAVStatus":
         vav-status = req.get("result").get("parameters").get("vav-status")
         temp = "false"
-        if vav-status == "on"
+        if vav-status == "on":
             temp = "true"
         payload = "{action : \"setVAVStatus\",params : ["+ temp +"]}"
     elif actionName == "readCurrentTemperature":
@@ -79,7 +79,7 @@ def processRequest(req):
     elif actionName == "setMediaStatus":
         media-status = req.get("result").get("parameters").get("media-status")
         temp = "false"
-        if vav-status == "on"
+        if vav-status == "on":
             temp = "true"
         payload = "{action : \"setMediaStatus\",params : ["+ temp +"]}"
     elif actionName == "increaseLightIntensity":
