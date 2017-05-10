@@ -61,38 +61,37 @@ def processRequest(req):
     elif actionName == "yes":
         payload = "{action : \"yesAction\",params : []}"
     elif actionName == "setVAVStatus":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "readCurrentTemperature":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "setTemperature":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "setLightIntensity":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "setBlinds":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "setMediaStatus":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "increaseLightIntensity":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "reduceLightIntensity":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "zeroLightIntensity":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "fullLightIntensity":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "increaseCurtainPosition":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "reduceCurtainPosition":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "increaseTemperature":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "decreaseTemperature":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "closeCurtainPosition":
-        payload = "{action : \"yesAction\",params : []}"
+        payload = ""
     elif actionName == "openCurtainPosition":
-        payload = "{action : \"yesAction\",params : []}"
-    
+        payload = ""
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
