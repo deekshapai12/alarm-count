@@ -60,37 +60,48 @@ def processRequest(req):
     elif actionName == "yes":
         payload = "{action : \"yesAction\",params : []}"
     elif actionName == "setVAVStatus":
-        payload = ""
+        vav-status = req.get("result").get("parameters").get("vav-status")
+        temp = "false"
+        if vav-status == "on"
+            temp = "true"
+        payload = "{action : \"setVAVStatus\",params : ["+ temp +"]}"
     elif actionName == "readCurrentTemperature":
-        payload = ""
+        payload = "{action : \"readCurrentTemperature\",params : []}"
     elif actionName == "setTemperature":
-        payload = ""
+        temperature = req.get("result").get("parameters").get("temperature")
+        payload = "{action : \"setTemperature\",params : ["+ temperature +"]}"
     elif actionName == "setLightIntensity":
-        payload = ""
+         lightIntensity = req.get("result").get("parameters").get("lightIntensity")
+        payload = "{action : \"setLightIntensity\",params : ["+ lightIntensity +"]}"
     elif actionName == "setBlinds":
-        payload = ""
+        position = req.get("result").get("parameters").get("position")
+        payload = "{action : \"setBlinds\",params : ["+ position +"]}"
     elif actionName == "setMediaStatus":
-        payload = ""
+        media-status = req.get("result").get("parameters").get("media-status")
+        temp = "false"
+        if vav-status == "on"
+            temp = "true"
+        payload = "{action : \"setMediaStatus\",params : ["+ temp +"]}"
     elif actionName == "increaseLightIntensity":
-        payload = ""
+        payload = "{action : \"setLightIntensityRel\",params : [\"5\"]}"
     elif actionName == "reduceLightIntensity":
-        payload = ""
+        payload = "{action : \"setLightIntensityRel\",params : [\"-5\"]}"
     elif actionName == "zeroLightIntensity":
-        payload = ""
+        payload = "{action : \"setLightIntensityRel\",params : [\"-x\"]}"
     elif actionName == "fullLightIntensity":
-        payload = ""
+        payload = "{action : \"setLightIntensityRel\",params : [\"+x\"]}"
     elif actionName == "increaseCurtainPosition":
-        payload = ""
+        payload = "{action : \"setBlindsRel\",params : [\"5\"]}"
     elif actionName == "reduceCurtainPosition":
-        payload = ""
+        payload = "{action : \"setBlindsRel\",params : [\"-5\"]}"
     elif actionName == "increaseTemperature":
-        payload = ""
+        payload = "{action : \"setTemperatureRel\",params : [\"1\"]}"
     elif actionName == "decreaseTemperature":
-        payload = ""
+        payload = "{action : \"setTemperatureRel\",params : [\"-1\"]}"
     elif actionName == "closeCurtainPosition":
-        payload = ""
+        payload = "{action : \"setBlindsRel\",params : [\"x\"]}"
     elif actionName == "openCurtainPosition":
-        payload = ""
+        payload = "{action : \"ssetBlindsRel\",params : [\"-x\"]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
