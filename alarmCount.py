@@ -79,7 +79,7 @@ def processRequest(req):
     elif actionName == "setMediaStatus":
         media-status = req.get("result").get("parameters").get("media-status")
         temp = "false"
-        if vav-status == "on":
+        if media-status == "on":
             temp = "true"
         payload = "{action : \"setMediaStatus\",params : ["+ temp +"]}"
     elif actionName == "increaseLightIntensity":
