@@ -118,7 +118,7 @@ def makeSpeechResponse(actionName,data):
     elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "similarAlarm" or actionName == "setVAVStatus" or actionName == "readCurrentTemperature" or actionName == "setTemperature" or actionName == "setLightIntensity" or actionName == "setBlinds" or actionName == "setMediaStatus" or actionName == "increaseLightIntensity" or actionName == "reduceLightIntensity" or actionName == "zeroLightIntensity" or actionName == "fullLightIntensity" or actionName == "increaseCurtainPosition" or actionName == "reduceCurtainPosition" or actionName == "increaseTemperature" or actionName == "decreaseTemperature" or actionName == "closeCurtainPosition" or actionName == "openCurtainPosition" :
         speech = data.get("message")[0]
         print("Speech is : " + speech)
-    elif actionName == "alarmInstructions-yes":
+    elif actionName == "alarmInstructions":
         speech = data.get("message")[0]
         print("Speech is : " + speech)      
     return {
