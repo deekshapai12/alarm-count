@@ -111,7 +111,7 @@ def processRequest(req):
         payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
     elif actionName == "openCurtainPosition":
         temp = "x"
-        payload = "{action : \"ssetBlindsRel\",params : ["+ temp +"]}"
+        payload = "{action : \"setBlindsRel\",params : ["+ temp +"]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
