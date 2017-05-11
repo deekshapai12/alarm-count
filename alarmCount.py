@@ -59,7 +59,7 @@ def processRequest(req):
         payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "yes":
         payload = "{action : \"yesAction\",params : []}"
-    elif actionName == "setVAVStatus":
+    elif actionName == "setVavStatus":
         vavStatus = req.get("result").get("parameters").get("vav-status")
         temp = "false"
         if vavStatus == "on":
@@ -124,7 +124,7 @@ def makeSpeechResponse(actionName,data):
         print("Total is : " + total)
         total = math.ceil(float(total))
         speech = "The current demand is " + str(total)
-    elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "similarAlarm" or actionName == "setVAVStatus" or actionName == "readCurrentTemperature" or actionName == "setTemperature" or actionName == "setLightIntensity" or actionName == "setBlinds" or actionName == "setMediaStatus" or actionName == "increaseLightIntensity" or actionName == "reduceLightIntensity" or actionName == "zeroLightIntensity" or actionName == "fullLightIntensity" or actionName == "increaseCurtainPosition" or actionName == "reduceCurtainPosition" or actionName == "increaseTemperature" or actionName == "decreaseTemperature" or actionName == "closeCurtainPosition" or actionName == "openCurtainPosition" or actionName == "yes" :
+    elif actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "similarAlarm" or actionName == "setVavStatus" or actionName == "readCurrentTemperature" or actionName == "setTemperature" or actionName == "setLightIntensity" or actionName == "setBlinds" or actionName == "setMediaStatus" or actionName == "increaseLightIntensity" or actionName == "reduceLightIntensity" or actionName == "zeroLightIntensity" or actionName == "fullLightIntensity" or actionName == "increaseCurtainPosition" or actionName == "reduceCurtainPosition" or actionName == "increaseTemperature" or actionName == "decreaseTemperature" or actionName == "closeCurtainPosition" or actionName == "openCurtainPosition" or actionName == "yes" :
         speech = data.get("message")[0]
         print("Speech is : " + speech)
     elif actionName == "alarmInstructions":
