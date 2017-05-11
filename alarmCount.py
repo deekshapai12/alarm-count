@@ -86,31 +86,31 @@ def processRequest(req):
         temp = "5"
         payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "reduceLightIntensity":
-         temp = "-5"
+        temp = "-5"
         payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "zeroLightIntensity":
-         temp = "-x"
+        temp = "-x"
         payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "fullLightIntensity":
-         temp = "x"
+        temp = "x"
         payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "increaseCurtainPosition":
-         temp = "5"
+        temp = "5"
         payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
     elif actionName == "reduceCurtainPosition":
-         temp = "-5"
+        temp = "-5"
         payload = "{action : \"setBlindsRel\",params : ["+ temp +"]}"
     elif actionName == "increaseTemperature":
-         temp = "1"
+        temp = "1"
         payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
     elif actionName == "decreaseTemperature":
-         temp = "-1"
+        temp = "-1"
         payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
     elif actionName == "closeCurtainPosition":
-         temp = "-x"
+        temp = "-x"
         payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
     elif actionName == "openCurtainPosition":
-         temp = "x"
+        temp = "x"
         payload = "{action : \"ssetBlindsRel\",params : ["+ temp +"]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
