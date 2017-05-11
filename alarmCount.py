@@ -83,25 +83,35 @@ def processRequest(req):
             temp = "true"
         payload = "{action : \"setMediaStatus\",params : ["+ temp +"]}"
     elif actionName == "increaseLightIntensity":
-        payload = "{action : \"setLightIntensityRel\",params : [\"5\"]}"
+        temp = "5"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "reduceLightIntensity":
-        payload = "{action : \"setLightIntensityRel\",params : [\"-5\"]}"
+         temp = "-5"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "zeroLightIntensity":
-        payload = "{action : \"setLightIntensityRel\",params : [\"-x\"]}"
+         temp = "-x"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "fullLightIntensity":
-        payload = "{action : \"setLightIntensityRel\",params : [\"+x\"]}"
+         temp = "x"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "increaseCurtainPosition":
-        payload = "{action : \"setBlindsRel\",params : [\"5\"]}"
+         temp = "5"
+        payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
     elif actionName == "reduceCurtainPosition":
-        payload = "{action : \"setBlindsRel\",params : [\"-5\"]}"
+         temp = "-5"
+        payload = "{action : \"setBlindsRel\",params : ["+ temp +"]}"
     elif actionName == "increaseTemperature":
-        payload = "{action : \"setTemperatureRel\",params : [\"1\"]}"
+         temp = "1"
+        payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
     elif actionName == "decreaseTemperature":
-        payload = "{action : \"setTemperatureRel\",params : [\"-1\"]}"
+         temp = "-1"
+        payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
     elif actionName == "closeCurtainPosition":
-        payload = "{action : \"setBlindsRel\",params : [\"x\"]}"
+         temp = "-x"
+        payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
     elif actionName == "openCurtainPosition":
-        payload = "{action : \"ssetBlindsRel\",params : [\"-x\"]}"
+         temp = "x"
+        payload = "{action : \"ssetBlindsRel\",params : ["+ temp +"]}"
     headers = {
         'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
         'cache-control': 'no-cache',
