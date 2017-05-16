@@ -227,7 +227,7 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
 if __name__ == '__main__':
     cred = os.getenv('GOOGLE_CREDENTIALS_BASE64')
     fpath = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-    if (cred(does not equal)false) and (fpath (does not equal)false):
+    if (cred<>false) and (fpath<>false):
         #file_put_contents(fpath, base64_decode(cred));
         with open(base64.b64decode(cred)) as f_in:
             with open('fpath') as f_out:
