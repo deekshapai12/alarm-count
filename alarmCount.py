@@ -199,7 +199,7 @@ def processRequest(req):
     return res
 
 # def makeSpeechResponse(actionName,data):
-def makeSpeechResponse(actionName,topicName,subscriptionName)
+def makeSpeechResponse(actionName,topicName,subscriptionName):
     # if actionName == "totalEnergy":
     #     total = data.get("responses")[0].get("value")
     #     print("Total is : " + total)
