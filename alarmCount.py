@@ -5,6 +5,7 @@ from future.standard_library import install_aliases
 install_aliases()
 
 from oauth2client.service_account import ServiceAccountCredentials
+from oauth2client.client import _get_application_default_credential_from_file
 
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
@@ -223,8 +224,10 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
            }
 
 if __name__ == '__main__':
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
-    #print(os.environ["GOOGLE_APPLICATION_CREDENTIALS"])
+    #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
+    json_credentials_path = 'Deeksha Project-5204d514b418.json'
+    credentials = _get_application_default_credential_from_file(
+    json_credentials_path)
     #scopes = ['https://www.googleapis.com/auth/sqlservice.admin']
     #credentials = ServiceAccountCredentials.from_json_keyfile_name('Deeksha Project-5204d514b418.json', scopes=scopes)
     port = int(os.getenv('PORT', 5000))
