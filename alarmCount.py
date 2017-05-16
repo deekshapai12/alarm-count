@@ -16,6 +16,7 @@ import os
 import requests
 import math
 import argparse
+import base64
 
 from flask import Flask
 from flask import request
@@ -224,7 +225,14 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
            }
 
 if __name__ == '__main__':
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
+    cred = os.getenv('GOOGLE_CREDENTIALS_BASE64')
+    fpath = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    if (cred(does not equal)false) and (fpath (does not equal)false):
+        #file_put_contents(fpath, base64_decode(cred));
+        with open(base64.b64decode(cred)) as f_in:
+            with open('fpath') as f_out:
+                 f_out.write(f_in.read())
+    #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
     #scopes = ['https://www.googleapis.com/auth/sqlservice.admin']
     #credentials = ServiceAccountCredentials.from_json_keyfile_name('Deeksha Project-5204d514b418.json', scopes=scopes)
     port = int(os.getenv('PORT', 5000))
