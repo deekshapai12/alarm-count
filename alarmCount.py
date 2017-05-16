@@ -223,7 +223,7 @@ def makeSpeechResponse(actionName,topicName,subscriptionName)
            }
 
 if __name__ == '__main__':
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=""
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
     port = int(os.getenv('PORT', 5000))
 
     print("Starting app on port %d" % port)
