@@ -28,7 +28,7 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    print(request.headers['hostname'])
+#     print(request.headers['hostname'])
     req = request.get_json(silent=True, force=True)
 
     print("Request:")
