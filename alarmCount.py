@@ -224,10 +224,7 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
            }
 
 if __name__ == '__main__':
-    #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
-    json_credentials_path = 'Deeksha Project-5204d514b418.json'
-    credentials = _get_application_default_credential_from_file(
-    json_credentials_path)
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]='Deeksha Project-5204d514b418.json'
     #scopes = ['https://www.googleapis.com/auth/sqlservice.admin']
     #credentials = ServiceAccountCredentials.from_json_keyfile_name('Deeksha Project-5204d514b418.json', scopes=scopes)
     port = int(os.getenv('PORT', 5000))
