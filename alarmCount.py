@@ -4,7 +4,7 @@ from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
 
-
+from oauth2client.service_account import ServiceAccountCredentials
 
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
@@ -223,7 +223,9 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
            }
 
 if __name__ == '__main__':
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
+    # os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
+    scopes = ['https://www.googleapis.com/auth/sqlservice.admin']
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('Deeksha Project-5204d514b418.json', scopes=scopes)
     port = int(os.getenv('PORT', 5000))
 
     print("Starting app on port %d" % port)
