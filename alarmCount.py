@@ -229,7 +229,7 @@ if __name__ == '__main__':
     fpath=os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if (cred != None and fpath != None):
         with open(fpath,'w') as f:
-            f.write(base64.decodestring(cred))
+            f.write(base64.b64decode(cred))
             
     port = int(os.getenv('PORT', 5000))
 
