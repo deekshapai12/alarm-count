@@ -45,7 +45,9 @@ def webhook():
 def receive_message(topicName, subscriptionName):
     """Receives a message from a pull subscription."""
     pubsub_client = pubsub.Client()
+    print("Hello")
     topic = pubsub_client.topic(topicName)
+    print("HIIIIIIIII")
     subscription = topic.subscription(subscriptionName)
     print("subscription"+topic)
     # Change return_immediately=False to block until messages are
