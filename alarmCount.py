@@ -225,13 +225,11 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
            }
 
 if __name__ == '__main__':
-    cred = os.getenv('GOOGLE_CREDENTIALS_BASE64')
-    fpath = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-    if (cred<>false) and (fpath<>false):
-        #file_put_contents(fpath, base64_decode(cred));
-        with open(base64.b64decode(cred)) as f_in:
-            with open('fpath') as f_out:
-                 f_out.write(f_in.read())
+    cred=os.environ.get("GOOGLE_CREDENTIALS_BASE64")
+    fpath=os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+    if (cred != None && fpath != None):
+        with open(fpath,'w') as f:
+        f.write(base64.decodestring(cred))
     #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
     #scopes = ['https://www.googleapis.com/auth/sqlservice.admin']
     #credentials = ServiceAccountCredentials.from_json_keyfile_name('Deeksha Project-5204d514b418.json', scopes=scopes)
