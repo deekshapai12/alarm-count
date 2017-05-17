@@ -4,8 +4,7 @@ from __future__ import print_function
 from future.standard_library import install_aliases
 install_aliases()
 
-from oauth2client.service_account import ServiceAccountCredentials
-from oauth2client.client import _get_application_default_credential_from_file
+from google.oauth2 import service_account
 
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
@@ -42,9 +41,11 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
-def receive_message(topicName, subscriptionName):
+def receive_message(projectName, topicName, subscriptionName):
     """Receives a message from a pull subscription."""
-    pubsub_client = pubsub.Client()
+    credentials = service_account.Credentials.from_service_account_file('Deeksha Project-f64b77ee6386.json')
+    scoped_credentials = credentials.with_scopes(['https://www.googleapis.com/auth/cloud-platform'])
+    pubsub_client = pubsub.Client(project=projectName,credentials=credentials)
     topic = pubsub_client.topic(topicName)
     subscription = topic.subscription(subscriptionName)
     # Change return_immediately=False to block until messages are
@@ -68,6 +69,7 @@ def receive_message(topicName, subscriptionName):
 def processRequest(req):
     # url = "http://"+request.headers['hostname']+"/awsMessage"
     actionName = req.get("result").get("action")
+    projectName = "deeksha-project"
     if actionName == "totalEnergy":
         topicName ="totalEnergy"
         subscriptionName ="Energy"
@@ -195,11 +197,11 @@ def processRequest(req):
     # response = requests.request("POST", url, data=payload, headers=headers)
     # data= json.loads(response.text)
     # res = makeSpeechResponse(actionName,data)
-    res = makeSpeechResponse(actionName,topicName,subscriptionName)
+    res = makeSpeechResponse(actionName,projectName,topicName,subscriptionName)
     return res
 
 # def makeSpeechResponse(actionName,data):
-def makeSpeechResponse(actionName,topicName,subscriptionName):
+def makeSpeechResponse(actionName,projectName,topicName,subscriptionName):
     # if actionName == "totalEnergy":
     #     total = data.get("responses")[0].get("value")
     #     print("Total is : " + total)
@@ -211,7 +213,7 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
     #     total = math.ceil(float(total))
     #     speech = "The current demand is " + str(total)
     if actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "similarAlarm" or actionName == "setVavStatus" or actionName == "readCurrentTemperature" or actionName == "setTemperature" or actionName == "setLightIntensity" or actionName == "setBlinds" or actionName == "setMediaStatus" or actionName == "increaseLightIntensity" or actionName == "reduceLightIntensity" or actionName == "zeroLightIntensity" or actionName == "fullLightIntensity" or actionName == "increaseCurtainPosition" or actionName == "reduceCurtainPosition" or actionName == "increaseTemperature" or actionName == "decreaseTemperature" or actionName == "closeCurtainPosition" or actionName == "openCurtainPosition" or actionName == "yes" :
-        speech = receive_message(topicName, subscriptionName)
+        speech = receive_message(projectName, topicName, subscriptionName)
         print("Speech is : " + speech)
     # elif actionName == "alarmInstructions":
     #     speech = data.get("message")[0] + ". Do you want to execute this action"
