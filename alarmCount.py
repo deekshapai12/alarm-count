@@ -44,7 +44,6 @@ def webhook():
 def receive_message(projectName, topicName, subscriptionName):
     """Receives a message from a pull subscription."""
     credentials = service_account.Credentials.from_service_account_file('Deeksha Project-f64b77ee6386.json')
-    scoped_credentials = credentials.with_scopes(['https://www.googleapis.com/auth/cloud-platform'])
     pubsub_client = pubsub.Client(project=projectName,credentials=credentials)
     topic = pubsub_client.topic(topicName)
     subscription = topic.subscription(subscriptionName)
