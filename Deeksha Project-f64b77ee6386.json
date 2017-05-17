@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "deeksha-project",
+  "private_key_id": "f64b77ee6386d9b68f4495bd504c4c68dda81c2a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCkBxQsMIylrj56\n9lb6gaLHjTKgYkN3ijVm1uQi/ZJolupqsGyQiXx3yzipEDj0IE/JE+EExh8RG0Nu\nu7dUaF4qbmI22utd5hTnQPFYID/r0n9nsuNNZT/INirIv0ERZzh74iAxyo+Esj53\ndknPb+nOcqPTeHz2vif+SgWZuSO+YIDT9bVZwz/+6hjPhXqSWwotwvAzXsdvryie\nJgrNgHpnkzrJeYWGlIk6xw+mjxOPIc5mLYr+X32nQAch0paZVEi/Jl8jSC4/SVaZ\n78J9GSPxYdcDgKeDK8sZ2MXMdVip79FDtPGElJvaUKImdNgzAdYS2xwu7578h01T\nj4WD4AFfAgMBAAECggEBAIaibNNssjVYFV7WjkQmXhdPdWuh3GDlZ7nWzwFNg3wn\ny5fw4dutjiXB/+r9LtJrJzIUCBHkESH4b9wXZn55ADnxytndzW2Qaj36116Pcgg+\nCmdytRIU9kp+85U9Lsp7ICjHTcewzSaNK6rgw+rpoE7dWE0+y8u3/5nA5mHsTkN3\nH9zYTxOf4bQX66mwRmb+pFkDr7w6cyJdiNRdBtCYHg1zwVcYK0/glm9qoz1gn98r\nlQs7zjvFUYIGh79YGnjP59Qlo/Xx0oaG9/tesTOTTlrxJOWL5JIgx69oqPrnzZxW\nudmZFZSDiSLrcmH/8Tx7/LJgO+X6vBBzEeJ+GwX1IdECgYEA1w5K8SHsuDYAEKCL\ncbBfLVXaDIDWDKxamksEFjFVdSOEOzSloRl7sTHQh1ASBVID6cYEcvovIK8YRKoO\n1l/bZHIrRrhODTUg8FqBhc/MlQy4KPRfdoWvvm7V3eOg4Jdw1/OVUhF6CTfyjjkQ\nfwaUJefuDePUFml99+LjCZYgObkCgYEAw0GzGsZbATI1X2JcF9bFfpHPSsSTFB+S\nC70cctHwrB9kO5VVoTg2AC1RCSnYWcxP+vhNaEr8Vi04+VWyH92+7AT/vVjhMwNA\nC1vt0ClNLVtOgNmooai01G4h/paOxDmOXkhlLx7YbyFL2+g9wHmKvuKvWXv761sP\nh0JecGbzP9cCgYEAt0+ok8geFpt5DLM8iYkUZ/lxJw0+54iWpkRhVGVy+alvkmP6\n9spZBB55KI4Y/k39pewzaKpXN53oqsbmZNdKlGE5AEwjw+BQlnAfTadmNHqmE8rS\nAJ5Nwp6JUF0yiZ6tAnbQBid9hZQZ/h8oL461A2aiJVbZNs1vIbhVXJuKFokCgYA5\nuLxn1+ejTOJ2Vi9/ZKBxsE0lf0Mzmbmk+rzkPKf3WjhZXOY5iNJ97ueb2+D3euzR\n9oF7qV87YpcLLog/31/HihrIMPQyDm3qbby54tvL4sgsUywEzkjW28/04TFHVPR/\nbstqyKWXBLLWSaunsMaRc5X+0CZDB2Jpy/b7J5QVdQJ/dzJBJMu/Z2Vm1VlpFln7\nibCZceZFDukDVtDq7jRErvmlv/ZxpB64Q9HPojq/TL+PbfMl4KmAVBayHkrNzmuI\nv4G7tHoMd2xrXglgCW7q7KzAXo91lJ9zAakUkonyIZluLZcxAFTfC+AW6ja36qzj\n4GVLueuQaovDwR/L+qiPRQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "googlehome@deeksha-project.iam.gserviceaccount.com",
+  "client_id": "105098892662921888473",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/googlehome%40deeksha-project.iam.gserviceaccount.com"
+}
