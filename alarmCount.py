@@ -225,11 +225,11 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
            }
 
 if __name__ == '__main__':
-   # cred=os.environ.get("GOOGLE_CREDENTIALS_BASE64")
-    #fpath=os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-    #if (cred != None and fpath != None):
-     #   with open(fpath,'w') as f:
-      #      f.write(base64.decodestring(cred))
+    cred=os.environ.get("GOOGLE_CREDENTIALS_BASE64")
+    fpath=os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
+    if (cred != None and fpath != None):
+        with open(fpath,'w') as f:
+            f.write(base64.decodestring(cred))
             
     port = int(os.getenv('PORT', 5000))
 
