@@ -11,12 +11,12 @@ from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 
+import base64
 import json
 import os
 import requests
 import math
 import argparse
-import base64
 
 from flask import Flask
 from flask import request
@@ -229,7 +229,8 @@ if __name__ == '__main__':
     fpath=os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
     if (cred != None and fpath != None):
         with open(fpath,'w') as f:
-             f.write(base64.decodestring(cred))
+            f.write(base64.decodestring(cred))
+                
     #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
     #scopes = ['https://www.googleapis.com/auth/sqlservice.admin']
     #credentials = ServiceAccountCredentials.from_json_keyfile_name('Deeksha Project-5204d514b418.json', scopes=scopes)
