@@ -44,6 +44,7 @@ def webhook():
 
 def receive_message(topicName, subscriptionName):
     """Receives a message from a pull subscription."""
+    print("Hello")
     pubsub_client = pubsub.Client()
     topic = pubsub_client.topic(topicName)
     subscription = topic.subscription(subscriptionName)
