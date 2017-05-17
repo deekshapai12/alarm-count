@@ -50,8 +50,6 @@ def receive_message(topicName, subscriptionName):
     # Change return_immediately=False to block until messages are
     # received.
     results = subscription.pull(return_immediately=True)
-
-    print(results)
     print('Received {} messages.'.format(len(results)))
     speech = ''
     for ack_id, message in results:
