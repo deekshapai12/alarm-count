@@ -227,7 +227,7 @@ def makeSpeechResponse(actionName,topicName,subscriptionName):
 if __name__ == '__main__':
     cred=os.environ.get("GOOGLE_CREDENTIALS_BASE64")
     fpath=os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-    if (cred != None && fpath != None):
+    if (cred != None and fpath != None):
         with open(fpath,'w') as f:
         f.write(base64.decodestring(cred))
     #os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="Deeksha Project-5204d514b418.json"
