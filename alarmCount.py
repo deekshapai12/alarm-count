@@ -79,7 +79,7 @@ def processRequest(req):
         # payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "allAlarmCount":
         topicName ="alarmCounts"
-        subscriptionName ="Count"
+        subscriptionName ="aCounts"
         # payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
     elif actionName == "allCriticalAlarms":
         topicName ="criticalAlarms"
