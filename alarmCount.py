@@ -41,6 +41,19 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
+def publish_message(projectName, topicName, data):
+    """Publishes a message to a Pub/Sub topic with the given data."""
+    credentials = service_account.Credentials.from_service_account_file('Deeksha Project-f64b77ee6386.json')
+    pubsub_client = pubsub.Client()
+    topic = pubsub_client.topic(topic_name)
+
+    # Data must be a bytestring
+    data = data.encode('utf-8')
+
+    message_id = topic.publish(data)
+
+    print('Message {} published.'.format(message_id))
+
 def receive_message(projectName, topicName, subscriptionName):
     """Receives a message from a pull subscription."""
     credentials = service_account.Credentials.from_service_account_file('Deeksha Project-f64b77ee6386.json')
