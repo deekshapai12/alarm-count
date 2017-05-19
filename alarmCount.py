@@ -163,11 +163,11 @@ def processRequest(req):
     # data= json.loads(response.text)
     # res = makeSpeechResponse(actionName,data)
     if actionName == "getNiagaraMessage":
-        topicName = ""
-        subscriptionName = ""
+        topicName = "NiagaraPub"
+        subscriptionName = "NiagaraSub"
         res = makeSpeechResponse(actionName,projectName,topicName,subscriptionName,None)
     else:
-        topicName = ""
+        topicName = "WebhookPub"
         res = makeSpeechResponse(actionName,projectName,topicName,None,payload)
     return res
 
