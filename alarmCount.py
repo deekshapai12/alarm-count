@@ -82,124 +82,77 @@ def processRequest(req):
     # url = "http://"+request.headers['hostname']+"/awsMessage"
     actionName = req.get("result").get("action")
     projectName = "deeksha-project"
+    topicName = ""
     if actionName == "totalEnergy":
-        topicName ="totalEnergy"
-        subscriptionName ="Energy"
-        # payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
+        payload = "{\"requests\":[{\"message\":\"GetRollup\",\"node\":\"slot:/TestPoints/Bangalore\",\"data\":\"n:history\",\"timeRange\":\"today\",\"rollup\":\"sum\"}]}"
     elif actionName == "demand":
-        topicName =" totalDemand"
-        subscriptionName ="Demand"
-        # payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
+        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "allAlarmCount":
-        topicName ="alarmCounts"
-        subscriptionName ="aCounts"
-        # payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
+        payload = "{\n\taction : \"getAllAlarmListCount\",\n\tparams : []\n}"
     elif actionName == "allCriticalAlarms":
-        topicName ="criticalAlarms"
-        subscriptionName ="Critical"
-        # payload = "{action : \"getAllCriticalAlarms\",params : []}"
+        payload = "{action : \"getAllCriticalAlarms\",params : []}"
     elif actionName == "alarmInstructions":
-        topicName ="alarmInstructions"
-        subscriptionName ="Instructions"
-        # alarmIndex = req.get("result").get("parameters").get("alarmIndex")
-        # payload = "{action : \"getAlarmInstruction\",params : [" + alarmIndex + "]}"
+        alarmIndex = req.get("result").get("parameters").get("alarmIndex")
+        payload = "{action : \"getAlarmInstruction\",params : [" + alarmIndex + "]}"
     elif actionName == "similarAlarm":
-        topicName ="similarAlarm"
-        subscriptionName ="Similar"
-        # payload = "{action : \"getSimilarAlarms\",params : []}"
+        payload = "{action : \"getSimilarAlarms\",params : []}"
     elif actionName == "controlLogic":
-        topicName ="controlLogic"
-        subscriptionName ="Logic"
-        # payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
+        payload = "{\"requests\":[{\"message\":\"GetValue\",\"node\":\"slot:/TestPoints/LakeForest\",\"data\":\"hs:power\",\"timeRange\":\"today\",\"rollup\":\"max\"}]}"
     elif actionName == "yes":
-        topicName ="yesAction"
-        subscriptionName ="Yes"
-        # payload = "{action : \"yesAction\",params : []}"
+        payload = "{action : \"yesAction\",params : []}"
     elif actionName == "setVavStatus":
-        topicName ="vavStatus"
-        subscriptionName ="Vav"
-        # vavStatus = req.get("result").get("parameters").get("vav-status")
-        # temp = "false"
-        # if vavStatus == "on":
-            # temp = "true"
-        # payload = "{action : \"setVAVStatus\",params : ["+ temp +"]}"
+        vavStatus = req.get("result").get("parameters").get("vav-status")
+        temp = "false"
+        if vavStatus == "on":
+            temp = "true"
+        payload = "{action : \"setVAVStatus\",params : ["+ temp +"]}"
     elif actionName == "readCurrentTemperature":
-        topicName ="currentTemp"
-        subscriptionName ="Current"
-        # payload = "{action : \"readCurrentTemperature\",params : []}"
+        payload = "{action : \"readCurrentTemperature\",params : []}"
     elif actionName == "setTemperature":
-        topicName ="setTemp"
-        subscriptionName ="Set"
-        # temperature = req.get("result").get("parameters").get("temperature")
-        # payload = "{action : \"setTemperature\",params : ["+ temperature +"]}"
+        temperature = req.get("result").get("parameters").get("temperature")
+        payload = "{action : \"setTemperature\",params : ["+ temperature +"]}"
     elif actionName == "setLightIntensity":
-        topicName ="lightIntensity"
-        subscriptionName ="Light"
-        # lightIntensity = req.get("result").get("parameters").get("lightIntensity")
-        # payload = "{action : \"setLightIntensity\",params : ["+ lightIntensity +"]}"
+        lightIntensity = req.get("result").get("parameters").get("lightIntensity")
+        payload = "{action : \"setLightIntensity\",params : ["+ lightIntensity +"]}"
     elif actionName == "setBlinds":
-        topicName ="setBlinds"
-        subscriptionName ="Blinds"
-        # position = req.get("result").get("parameters").get("position")
-        # payload = "{action : \"setBlinds\",params : ["+ position +"]}"
+        position = req.get("result").get("parameters").get("position")
+        payload = "{action : \"setBlinds\",params : ["+ position +"]}"
     elif actionName == "setMediaStatus":
-        topicName ="mediaStatus"
-        subscriptionName ="Media"
-        # mediaStatus = req.get("result").get("parameters").get("media-status")
-        # temp = "false"
-        # if mediaStatus == "on":
-            # temp = "true"
-        # payload = "{action : \"setMediaStatus\",params : ["+ temp +"]}"
+        mediaStatus = req.get("result").get("parameters").get("media-status")
+        temp = "false"
+        if mediaStatus == "on":
+            temp = "true"
+        payload = "{action : \"setMediaStatus\",params : ["+ temp +"]}"
     elif actionName == "increaseLightIntensity":
-        topicName ="increaseLight"
-        subscriptionName ="Increase"
-        # temp = "5"
-        # payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
-    elif actionName == "reduceLightIntensity":
-        topicName ="reduceLight"
-        subscriptionName ="Reduce"
-        # temp = "-5"
-        # payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
+        temp = "5"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
+    elif actionName == "reduceLightIntensity":"
+        temp = "-5"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "zeroLightIntensity":
-        topicName ="zeroLight"
-        subscriptionName ="Zero"
-        # temp = "-x"
-        # payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
+        temp = "-x"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "fullLightIntensity":
-        topicName ="fullLight"
-        subscriptionName ="Full"
-        # temp = "x"
-        # payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
+        temp = "x"
+        payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "increaseCurtainPosition":
-        topicName ="curtainPosition"
-        subscriptionName ="Curtain"
-        # temp = "5"
-        # payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
+        temp = "5"
+        payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
     elif actionName == "reduceCurtainPosition":
-        topicName ="reduceCurtain"
-        subscriptionName ="RedCurtain"
-        # temp = "-5"
-        # payload = "{action : \"setBlindsRel\",params : ["+ temp +"]}"
+        temp = "-5"
+        payload = "{action : \"setBlindsRel\",params : ["+ temp +"]}"
     elif actionName == "increaseTemperature":
-        topicName ="increaseTemperature"
-        subscriptionName ="incTemp"
-        # temp = "1"
-        # payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
+        temp = "1"
+        payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
     elif actionName == "decreaseTemperature":
-        topicName ="decreaseTemperature"
-        subscriptionName ="decTemp"
-        # temp = "-1"
-        # payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
+        temp = "-1"
+        payload = "{action : \"setTemperatureRel\",params : ["+ temp +"]}"
     elif actionName == "closeCurtainPosition":
-        topicName ="closeCurtain"
-        subscriptionName ="Close"
-        # temp = "-x"
-        # payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
+        temp = "-x"
+        payload = "{action : \"setBlindsRel\",params :["+ temp +"]}"
     elif actionName == "openCurtainPosition":
-        topicName ="openCurtain"
-        subscriptionName ="Open"
-        # temp = "x"
-        # payload = "{action : \"setBlindsRel\",params : ["+ temp +"]}"
+        temp = "x"
+        payload = "{action : \"setBlindsRel\",params : ["+ temp +"]}"
     # headers = {
     #     'authorization': 'Basic R0h0ZXN0OlRyaWRpdW0xMjM=',
     #     'cache-control': 'no-cache',
@@ -209,11 +162,17 @@ def processRequest(req):
     # response = requests.request("POST", url, data=payload, headers=headers)
     # data= json.loads(response.text)
     # res = makeSpeechResponse(actionName,data)
-    res = makeSpeechResponse(actionName,projectName,topicName,subscriptionName)
+    if actionName == "getNiagaraMessage":
+        topicName = ""
+        subscriptionName = ""
+        res = makeSpeechResponse(actionName,projectName,topicName,subscriptionName,None)
+    else:
+        topicName = ""
+        res = makeSpeechResponse(actionName,projectName,topicName,None,payload)
     return res
 
 # def makeSpeechResponse(actionName,data):
-def makeSpeechResponse(actionName,projectName,topicName,subscriptionName):
+def makeSpeechResponse(actionName,projectName,topicName,subscriptionName,payload):
     # if actionName == "totalEnergy":
     #     total = data.get("responses")[0].get("value")
     #     print("Total is : " + total)
@@ -225,11 +184,16 @@ def makeSpeechResponse(actionName,projectName,topicName,subscriptionName):
     #     total = math.ceil(float(total))
     #     speech = "The current demand is " + str(total)
     if actionName == "allAlarmCount" or actionName == "allCriticalAlarms"  or actionName == "similarAlarm" or actionName == "setVavStatus" or actionName == "readCurrentTemperature" or actionName == "setTemperature" or actionName == "setLightIntensity" or actionName == "setBlinds" or actionName == "setMediaStatus" or actionName == "increaseLightIntensity" or actionName == "reduceLightIntensity" or actionName == "zeroLightIntensity" or actionName == "fullLightIntensity" or actionName == "increaseCurtainPosition" or actionName == "reduceCurtainPosition" or actionName == "increaseTemperature" or actionName == "decreaseTemperature" or actionName == "closeCurtainPosition" or actionName == "openCurtainPosition" or actionName == "yes" :
-        speech = receive_message(projectName, topicName, subscriptionName)
+        publish_message(projectName, topicName, payload)
+        speech = "Your request has been sent to Niagara."
         print("Speech is : " + speech)
+    elif actionName == "getNiagaraMessage":
+        speech = receive_message(projectName, topicName, subscriptionName)
+        print("Speech is : "+ speech)
     # elif actionName == "alarmInstructions":
     #     speech = data.get("message")[0] + ". Do you want to execute this action"
     #     print("Speech is : " + speech)
+    
     return {
         "speech": speech,
         "displayText": speech,
