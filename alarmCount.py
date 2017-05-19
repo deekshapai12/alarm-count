@@ -126,7 +126,7 @@ def processRequest(req):
     elif actionName == "increaseLightIntensity":
         temp = "5"
         payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
-    elif actionName == "reduceLightIntensity":"
+    elif actionName == "reduceLightIntensity":
         temp = "-5"
         payload = "{action : \"setLightIntensityRel\",params : ["+ temp +"]}"
     elif actionName == "zeroLightIntensity":
